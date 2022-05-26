@@ -4,20 +4,19 @@ require 'spec_helper'
 
 describe PricePlanComparatorController do
   include Rack::Test::Methods
+  subject(:app) { described_class.new price_plan_service, account_service }
 
-  PRICE_PLAN_1_ID = 'test-supplier'
-  PRICE_PLAN_2_ID = 'best-supplier'
-  PRICE_PLAN_3_ID = 'second-best-supplier'
-
-  let(:app) { described_class.new price_plan_service, account_service }
+  let(:price_plan_1_id) { 'test-supplier' }
+  let(:price_plan_2_id) { 'best-supplier' }
+  let(:price_plan_3_id) { 'second-best-supplier' }
   let(:price_plan_service) { PricePlanService.new price_plans, electricity_reading_service }
   let(:electricity_reading_service) { ElectricityReadingService.new }
-  let(:account_service) { AccountService.new 'meter-0' => PRICE_PLAN_1_ID }
+  let(:account_service) { AccountService.new 'meter-0' => price_plan_1_id }
   let(:price_plans) do
     [
-      PricePlan.new(PRICE_PLAN_1_ID, nil, 10.0, nil),
-      PricePlan.new(PRICE_PLAN_2_ID, nil, 1.0, nil),
-      PricePlan.new(PRICE_PLAN_3_ID, nil, 2.0, nil)
+      PricePlan.new(price_plan_1_id, nil, 10.0, nil),
+      PricePlan.new(price_plan_2_id, nil, 1.0, nil),
+      PricePlan.new(price_plan_3_id, nil, 2.0, nil)
     ]
   end
 
@@ -27,77 +26,101 @@ describe PricePlanComparatorController do
       expect(last_response.status).to eq 404
     end
 
-    it 'gets costs against all price plans' do
-      readings = [
-        { 'time' => '2018-01-01T00:00:00.000Z', 'reading' => 15.0 },
-        { 'time' => '2018-01-01T01:00:00.000Z', 'reading' => 5.0 }
-      ]
-      electricity_reading_service.storeReadings('meter-0', readings)
+    context 'with all price plans' do
+      let(:expected_response) do
+        {
+          PricePlanComparatorController::PRICE_PLAN_KEY => price_plan_1_id,
+          PricePlanComparatorController::PRICE_PLAN_COMPARISON_KEY => {
+            price_plan_2_id => 10.0,
+            price_plan_3_id => 20.0,
+            price_plan_1_id => 100.0
+          }
+        }
+      end
+      let(:readings) do
+        [
+          { 'time' => '2018-01-01T00:00:00.000Z', 'reading' => 15.0 },
+          { 'time' => '2018-01-01T01:00:00.000Z', 'reading' => 5.0 }
+        ]
+      end
 
-      get '/price-plans/compare-all/meter-0'
-      expect(last_response).to be_ok
-      expect(JSON.parse(last_response.body)).to eq({
-                                                     PricePlanComparatorController::PRICE_PLAN_KEY => PRICE_PLAN_1_ID,
-                                                     PricePlanComparatorController::PRICE_PLAN_COMPARISON_KEY => {
-                                                       PRICE_PLAN_2_ID => 10.0,
-                                                       PRICE_PLAN_3_ID => 20.0,
-                                                       PRICE_PLAN_1_ID => 100.0
-                                                     }
-                                                   })
+      it 'gets costs against all price plans response' do
+        electricity_reading_service.store_readings('meter-0', readings)
+
+        get '/price-plans/compare-all/meter-0'
+        expect(JSON.parse(last_response.body)).to eq(expected_response)
+      end
+
+      it 'gets costs against all price plans' do
+        electricity_reading_service.store_readings('meter-0', readings)
+
+        get '/price-plans/compare-all/meter-0'
+        expect(last_response.ok?).to be(true)
+      end
     end
   end
 
   describe '/price-plans/recommend' do
+    let(:readings) do
+      [
+        { 'time' => '2018-01-01T00:00:00.000Z', 'reading' => 35.0 },
+        { 'time' => '2018-01-01T00:30:00.000Z', 'reading' => 3.0 }
+      ]
+    end
+    let(:expected_response) do
+      [
+        { price_plan_2_id => 38.0 },
+        { price_plan_3_id => 76.0 },
+        { price_plan_1_id => 380.0 }
+      ]
+    end
+    let(:expected_response_with_limit2) { [{ price_plan_2_id => 38.0 }, { price_plan_3_id => 76.0 }] }
+
     it 'returns no match if there is no meter with that meter id' do
       get '/price-plans/recommend/meter-1000'
       expect(last_response.status).to eq(404)
     end
 
-    it 'recommends cheapest price plans for meter id without any limit' do
-      readings = [
-        { 'time' => '2018-01-01T00:00:00.000Z', 'reading' => 35.0 },
-        { 'time' => '2018-01-01T00:30:00.000Z', 'reading' => 3.0 }
-      ]
-      electricity_reading_service.storeReadings('meter-0', readings)
+    it 'recommends cheapest price plans for meter id without any limit response' do
+      electricity_reading_service.store_readings('meter-0', readings)
 
       get '/price-plans/recommend/meter-0'
-      expect(last_response).to be_ok
-      expect(JSON.parse(last_response.body)).to eq([
-                                                     { PRICE_PLAN_2_ID => 38.0 },
-                                                     { PRICE_PLAN_3_ID => 76.0 },
-                                                     { PRICE_PLAN_1_ID => 380.0 }
-                                                   ])
+      expect(JSON.parse(last_response.body)).to eq(expected_response)
+    end
+
+    it 'recommends cheapest price plans for meter id without any limit' do
+      electricity_reading_service.store_readings('meter-0', readings)
+
+      get '/price-plans/recommend/meter-0'
+      expect(last_response.ok?).to be(true)
+    end
+
+    it 'recommends cheapest price plans for meter id up to a limited number response' do
+      electricity_reading_service.store_readings('meter-0', readings)
+
+      get '/price-plans/recommend/meter-0?limit=2'
+      expect(JSON.parse(last_response.body)).to eq(expected_response_with_limit2)
     end
 
     it 'recommends cheapest price plans for meter id up to a limited number' do
-      readings = [
-        { 'time' => '2018-01-01T00:00:00.000Z', 'reading' => 35.0 },
-        { 'time' => '2018-01-01T00:30:00.000Z', 'reading' => 3.0 }
-      ]
-      electricity_reading_service.storeReadings('meter-0', readings)
+      electricity_reading_service.store_readings('meter-0', readings)
 
       get '/price-plans/recommend/meter-0?limit=2'
-      expect(last_response).to be_ok
-      expect(JSON.parse(last_response.body)).to eq([
-                                                     { PRICE_PLAN_2_ID => 38.0 },
-                                                     { PRICE_PLAN_3_ID => 76.0 }
-                                                   ])
+      expect(last_response.ok?).to be(true)
+    end
+
+    it 'recommends cheapest price plans for meter id, returning all if the limit is too big response' do
+      electricity_reading_service.store_readings('meter-0', readings)
+
+      get '/price-plans/recommend/meter-0?limit=5'
+      expect(JSON.parse(last_response.body)).to eq(expected_response)
     end
 
     it 'recommends cheapest price plans for meter id, returning all if the limit is too big' do
-      readings = [
-        { 'time' => '2018-01-01T00:00:00.000Z', 'reading' => 35.0 },
-        { 'time' => '2018-01-01T00:30:00.000Z', 'reading' => 3.0 }
-      ]
-      electricity_reading_service.storeReadings('meter-0', readings)
+      electricity_reading_service.store_readings('meter-0', readings)
 
       get '/price-plans/recommend/meter-0?limit=5'
-      expect(last_response).to be_ok
-      expect(JSON.parse(last_response.body)).to eq([
-                                                     { PRICE_PLAN_2_ID => 38.0 },
-                                                     { PRICE_PLAN_3_ID => 76.0 },
-                                                     { PRICE_PLAN_1_ID => 380.0 }
-                                                   ])
+      expect(last_response.ok?).to be(true)
     end
   end
 end

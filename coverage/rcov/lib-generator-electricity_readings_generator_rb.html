@@ -25,7 +25,7 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="lib-generator-electricity_readings_generator_rb.html">lib/generator/electricity_readings_generator.rb</a></td>
-            <td class='right_align'><tt>15</tt></td>
+            <td class='right_align'><tt>17</tt></td>
             <td class='right_align'><tt>7</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
       <div class="percent_graph">
@@ -50,55 +50,61 @@
 
     <table class="details">
       <tbody>
-        <tr class="marked">
-          <td><pre><a name="line2">2</a> require &#39;date&#39;</pre></td>
+        <tr class="inferred">
+          <td><pre><a name="line2">2</a> # frozen_string_literal: true</pre></td>
         </tr>
         <tr class="inferred">
           <td><pre><a name="line3">3</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line4">4</a> class ElectricityReadingsGenerator</pre></td>
+          <td><pre><a name="line4">4</a> require &#39;date&#39;</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line5">5</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line5">5</a>   def generate(number)</pre></td>
+          <td><pre><a name="line6">6</a> class ElectricityReadingsGenerator</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line6">6</a>     now = DateTime.now</pre></td>
+          <td><pre><a name="line7">7</a>   def generate(number)</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line7">7</a>     one_second = Rational(1, 24 * 60 * 60)</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line8">8</a> </pre></td>
+          <td><pre><a name="line8">8</a>     now = DateTime.now</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line9">9</a>     (0..number - 1).map do |n|</pre></td>
+          <td><pre><a name="line9">9</a>     one_second = Rational(1, 24 * 60 * 60)</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line10">10</a>       {</pre></td>
+          <td><pre><a name="line10">10</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line11">11</a>         &#39;time&#39; =&gt; (now - (n * one_second)).to_s,</pre></td>
+          <td><pre><a name="line11">11</a>     (0..number - 1).map do |n|</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line12">12</a>         &#39;reading&#39; =&gt; rand(0.5..1.5)</pre></td>
+          <td><pre><a name="line12">12</a>       {</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line13">13</a>         &#39;time&#39; =&gt; (now - (n * one_second)).to_s,</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line13">13</a>       }</pre></td>
+          <td><pre><a name="line14">14</a>         &#39;reading&#39; =&gt; rand(0.5..1.5)</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line14">14</a>     end</pre></td>
+          <td><pre><a name="line15">15</a>       }</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line15">15</a>   end</pre></td>
+          <td><pre><a name="line16">16</a>     end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line16">16</a> end</pre></td>
+          <td><pre><a name="line17">17</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line18">18</a> end</pre></td>
         </tr>
       </tbody>
     </table>
 
-    <p>Generated on 2022-05-26 01:19:45 +0000 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.3.1</a></p>
+    <p>Generated on 2022-05-26 03:47:32 +0000 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.3.1</a></p>
 
   </body>
 </html>

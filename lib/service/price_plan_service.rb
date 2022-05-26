@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'date'
 
 class PricePlanService
@@ -7,13 +9,13 @@ class PricePlanService
   end
 
   def consumption_cost_of_meter_readings_for_each_price_plan(meter_id)
-    readings = @electricity_reading_service.getReadings(meter_id)
+    readings = @electricity_reading_service.get_readings(meter_id)
     if readings.nil?
       nil
     else
-      @price_plans.collect do |p|
+      @price_plans.to_h do |p|
         [p.plan_name, calculate_cost(readings, p)]
-      end.to_h
+      end
     end
   end
 
@@ -27,7 +29,7 @@ class PricePlanService
   end
 
   def calculate_average_reading(readings)
-    readings.map { |entry| entry['reading'] }.inject(:+) / readings.length
+    readings.sum { |entry| entry['reading'] } / readings.length
   end
 
   def calculate_time_elapsed(readings)

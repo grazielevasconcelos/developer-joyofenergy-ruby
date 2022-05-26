@@ -3,6 +3,8 @@
     "coverage": {
       "/var/app/lib/app.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           null,
@@ -29,33 +31,37 @@
       },
       "/var/app/lib/controller/meter_reading_controller.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           null,
           1,
-          1,
-          6,
-          6,
-          null,
           null,
           1,
-          10,
-          7,
-          7,
+          8,
+          8,
           null,
           null,
           null,
           1,
-          3,
-          3,
+          17,
+          12,
+          12,
+          null,
           null,
           null,
           1,
-          7,
-          7,
-          4,
-          4,
-          4,
+          5,
+          5,
+          null,
+          null,
+          1,
+          12,
+          12,
+          9,
+          9,
+          9,
           null,
           3,
           null,
@@ -63,32 +69,42 @@
           null
         ],
         "branches": {
-          "[:if, 0, 11, 4, 14, 7]": {
-            "[:then, 1, 12, 6, 13, 53]": 7,
-            "[:else, 2, 11, 4, 14, 7]": 3
+          "[:if, 0, 15, 4, 18, 7]": {
+            "[:then, 1, 16, 6, 17, 53]": 12,
+            "[:else, 2, 15, 4, 18, 7]": 5
           },
-          "[:if, 3, 24, 4, 30, 7]": {
-            "[:then, 4, 25, 6, 27, 16]": 4,
-            "[:else, 5, 29, 6, 29, 16]": 3
+          "[:\"&.\", 3, 28, 7, 28, 23]": {
+            "[:then, 4, 28, 7, 28, 23]": 10,
+            "[:else, 5, 28, 7, 28, 23]": 2
+          },
+          "[:\"&.\", 6, 28, 7, 28, 34]": {
+            "[:then, 7, 28, 7, 28, 34]": 10,
+            "[:else, 8, 28, 7, 28, 34]": 2
+          },
+          "[:if, 9, 28, 4, 34, 7]": {
+            "[:then, 10, 29, 6, 31, 16]": 9,
+            "[:else, 11, 33, 6, 33, 16]": 3
           }
         }
       },
       "/var/app/lib/service/electricity_reading_service.rb": {
         "lines": [
+          null,
+          null,
           1,
           null,
           1,
           1,
-          15,
+          21,
           null,
           null,
           1,
-          12,
+          18,
           null,
           null,
           1,
-          11,
-          11,
+          20,
+          20,
           null,
           null,
           1,
@@ -104,6 +120,8 @@
       },
       "/var/app/lib/helpers/usage_interval.rb": {
         "lines": [
+          null,
+          null,
           1,
           null,
           1,
@@ -131,124 +149,130 @@
       },
       "/var/app/lib/controller/price_plan_comparator_controller.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           1,
           null,
-          1,
-          7,
-          7,
-          7,
-          null,
           null,
           1,
-          2,
-          2,
-          2,
-          2,
-          2,
-          2,
-          1,
-          null,
-          1,
+          11,
+          11,
+          11,
           null,
           null,
           null,
           1,
-          4,
-          4,
-          4,
-          null,
-          4,
-          4,
-          9,
-          9,
-          null,
-          4,
-          1,
+          3,
+          3,
+          3,
+          3,
+          3,
           3,
           1,
           null,
           2,
           null,
           null,
+          null,
+          1,
+          7,
+          7,
+          7,
+          null,
+          7,
+          43,
+          null,
+          7,
+          1,
+          6,
+          2,
+          null,
+          4,
+          null,
+          null,
           null
         ],
         "branches": {
-          "[:if, 0, 15, 4, 15, 33]": {
-            "[:then, 1, 15, 4, 15, 14]": 1,
-            "[:else, 2, 15, 4, 15, 33]": 1
+          "[:if, 0, 19, 4, 19, 33]": {
+            "[:then, 1, 19, 4, 19, 14]": 1,
+            "[:else, 2, 19, 4, 19, 33]": 2
           },
-          "[:if, 3, 17, 4, 21, 7]": {
-            "[:then, 4, 18, 6, 18, 16]": 1,
-            "[:else, 5, 20, 6, 20, 88]": 1
+          "[:if, 3, 21, 4, 25, 7]": {
+            "[:then, 4, 22, 6, 22, 16]": 1,
+            "[:else, 5, 24, 6, 24, 88]": 2
           },
-          "[:if, 6, 36, 4, 39, 51]": {
-            "[:then, 7, 37, 6, 37, 33]": 1,
-            "[:else, 8, 39, 6, 39, 51]": 2
+          "[:if, 6, 38, 4, 41, 51]": {
+            "[:then, 7, 39, 6, 39, 33]": 2,
+            "[:else, 8, 41, 6, 41, 51]": 4
           },
-          "[:if, 9, 34, 4, 40, 7]": {
-            "[:then, 10, 35, 6, 35, 16]": 1,
-            "[:else, 11, 36, 4, 39, 51]": 3
+          "[:if, 9, 36, 4, 42, 7]": {
+            "[:then, 10, 37, 6, 37, 16]": 1,
+            "[:else, 11, 38, 4, 41, 51]": 6
           }
         }
       },
       "/var/app/lib/service/price_plan_service.rb": {
         "lines": [
-          1,
-          null,
-          1,
-          1,
-          7,
-          7,
           null,
           null,
           1,
-          6,
-          6,
+          null,
+          1,
+          1,
+          11,
+          11,
           null,
           null,
-          4,
-          12,
+          1,
+          10,
+          10,
+          null,
+          null,
+          8,
+          24,
           null,
           null,
           null,
           null,
           1,
-          12,
-          12,
+          24,
+          24,
           null,
-          12,
+          24,
           null,
-          12,
-          null,
-          null,
-          1,
-          36,
+          24,
           null,
           null,
           1,
-          36,
-          12,
+          72,
+          null,
+          null,
+          1,
+          72,
+          24,
           null,
           null
         ],
         "branches": {
-          "[:if, 0, 11, 4, 17, 7]": {
-            "[:then, 1, 11, 4, 17, 7]": 2,
-            "[:else, 2, 14, 6, 16, 14]": 4
+          "[:if, 0, 13, 4, 19, 7]": {
+            "[:then, 1, 13, 4, 19, 7]": 2,
+            "[:else, 2, 16, 6, 18, 9]": 8
           }
         }
       },
       "/var/app/lib/service/account_service.rb": {
         "lines": [
-          1,
-          1,
-          7,
           null,
           null,
           1,
-          2,
+          1,
+          11,
+          null,
+          null,
+          1,
+          3,
           null,
           null
         ],
@@ -257,6 +281,8 @@
       },
       "/var/app/lib/configuration.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           null,
@@ -306,14 +332,16 @@
       },
       "/var/app/lib/domain/price_plan.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           null,
           1,
-          23,
-          23,
-          23,
-          23,
+          35,
+          35,
+          35,
+          35,
           null,
           null,
           1,
@@ -332,14 +360,16 @@
           null
         ],
         "branches": {
-          "[:if, 0, 13, 4, 13, 55]": {
-            "[:then, 1, 13, 15, 13, 25]": 1,
-            "[:else, 2, 13, 28, 13, 55]": 1
+          "[:if, 0, 15, 4, 15, 89]": {
+            "[:then, 1, 15, 32, 15, 42]": 1,
+            "[:else, 2, 15, 45, 15, 89]": 1
           }
         }
       },
       "/var/app/lib/generator/electricity_readings_generator.rb": {
         "lines": [
+          null,
+          null,
           1,
           null,
           1,
@@ -360,6 +390,6 @@
         }
       }
     },
-    "timestamp": 1653527985
+    "timestamp": 1653536852
   }
 }

@@ -61,6 +61,8 @@ Layout/LineLength:
   Max: 120
   AllowedPatterns:
     - !ruby/regexp /\A +(it|describe|context|shared_examples|include_examples|it_behaves_like) ["']/
+  Exclude:
+    - 'Rakefile'
 
 Lint/InterpolationCheck:
   Exclude:

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'domain/price_plan'
 require_relative 'generator/electricity_readings_generator'
 
@@ -36,8 +38,8 @@ module Configuration
 
   def readings
     reading_generator = ElectricityReadingsGenerator.new
-    smart_meter_to_price_plan_accounts.keys.collect do |meter_id|
+    smart_meter_to_price_plan_accounts.keys.to_h do |meter_id|
       [meter_id, reading_generator.generate(20)]
-    end.to_h
+    end
   end
 end

@@ -20,10 +20,14 @@ ENV['RACK_ENV'] = 'test'
 require 'simplecov'
 require 'simplecov-rcov'
 
-class SimpleCov::Formatter::MergedFormatter
-  def format(result)
-    SimpleCov::Formatter::HTMLFormatter.new.format(result)
-    SimpleCov::Formatter::RcovFormatter.new.format(result)
+module SimpleCov
+  module Formatter
+    class MergedFormatter
+      def format(result)
+        SimpleCov::Formatter::HTMLFormatter.new.format(result)
+        SimpleCov::Formatter::RcovFormatter.new.format(result)
+      end
+    end
   end
 end
 SimpleCov.formatter = SimpleCov::Formatter::MergedFormatter
@@ -49,10 +53,15 @@ require 'date'
 require 'json'
 require 'rack/test'
 require 'rspec'
+require 'byebug'
 require_relative '../lib/app'
+require_relative '../lib/configuration'
 require_relative '../lib/controller/meter_reading_controller'
 require_relative '../lib/controller/price_plan_comparator_controller'
 require_relative '../lib/domain/price_plan'
+require_relative '../lib/generator/electricity_readings_generator'
+require_relative '../lib/helpers/usage_interval'
+require_relative '../lib/service/account_service'
 require_relative '../lib/service/electricity_reading_service'
 require_relative '../lib/service/price_plan_service'
 

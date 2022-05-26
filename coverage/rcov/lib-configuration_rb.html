@@ -25,7 +25,7 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="lib-configuration_rb.html">lib/configuration.rb</a></td>
-            <td class='right_align'><tt>43</tt></td>
+            <td class='right_align'><tt>45</tt></td>
             <td class='right_align'><tt>22</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
       <div class="percent_graph">
@@ -50,139 +50,145 @@
 
     <table class="details">
       <tbody>
-        <tr class="marked">
-          <td><pre><a name="line2">2</a> require_relative &#39;domain/price_plan&#39;</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line3">3</a> require_relative &#39;generator/electricity_readings_generator&#39;</pre></td>
+        <tr class="inferred">
+          <td><pre><a name="line2">2</a> # frozen_string_literal: true</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line4">4</a> </pre></td>
+          <td><pre><a name="line3">3</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line5">5</a> module Configuration</pre></td>
+          <td><pre><a name="line4">4</a> require_relative &#39;domain/price_plan&#39;</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line6">6</a>   DR_EVILS_DARK_ENERGY_ENERGY_SUPPLIER = &quot;Dr Evil&#39;s Dark Energy&quot;</pre></td>
+          <td><pre><a name="line5">5</a> require_relative &#39;generator/electricity_readings_generator&#39;</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line6">6</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line7">7</a>   THE_GREEN_ECO_ENERGY_SUPPLIER = &#39;The Green Eco&#39;</pre></td>
+          <td><pre><a name="line7">7</a> module Configuration</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line8">8</a>   POWER_FOR_EVERYONE_ENERGY_SUPPLIER = &#39;Power for Everyone&#39;</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line9">9</a> </pre></td>
+          <td><pre><a name="line8">8</a>   DR_EVILS_DARK_ENERGY_ENERGY_SUPPLIER = &quot;Dr Evil&#39;s Dark Energy&quot;</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line10">10</a>   MOST_EVIL_PRICE_PLAN_ID = &#39;price-plan-0&#39;</pre></td>
+          <td><pre><a name="line9">9</a>   THE_GREEN_ECO_ENERGY_SUPPLIER = &#39;The Green Eco&#39;</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line11">11</a>   RENEWABLES_PRICE_PLAN_ID = &#39;price-plan-1&#39;</pre></td>
+          <td><pre><a name="line10">10</a>   POWER_FOR_EVERYONE_ENERGY_SUPPLIER = &#39;Power for Everyone&#39;</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line11">11</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line12">12</a>   STANDARD_PRICE_PLAN_ID = &#39;price-plan-2&#39;</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line13">13</a> </pre></td>
+          <td><pre><a name="line12">12</a>   MOST_EVIL_PRICE_PLAN_ID = &#39;price-plan-0&#39;</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line14">14</a>   SARAHS_SMART_METER_ID = &#39;smart-meter-0&#39;</pre></td>
+          <td><pre><a name="line13">13</a>   RENEWABLES_PRICE_PLAN_ID = &#39;price-plan-1&#39;</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line15">15</a>   PETERS_SMART_METER_ID = &#39;smart-meter-1&#39;</pre></td>
+          <td><pre><a name="line14">14</a>   STANDARD_PRICE_PLAN_ID = &#39;price-plan-2&#39;</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line15">15</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line16">16</a>   CHARLIES_SMART_METER_ID = &#39;smart-meter-2&#39;</pre></td>
+          <td><pre><a name="line16">16</a>   SARAHS_SMART_METER_ID = &#39;smart-meter-0&#39;</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line17">17</a>   ANDREAS_SMART_METER_ID = &#39;smart-meter-3&#39;</pre></td>
+          <td><pre><a name="line17">17</a>   PETERS_SMART_METER_ID = &#39;smart-meter-1&#39;</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line18">18</a>   ALEXS_SMART_METER_ID = &#39;smart-meter-4&#39;</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line19">19</a> </pre></td>
+          <td><pre><a name="line18">18</a>   CHARLIES_SMART_METER_ID = &#39;smart-meter-2&#39;</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line20">20</a>   def price_plans</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line21">21</a>     [</pre></td>
+          <td><pre><a name="line19">19</a>   ANDREAS_SMART_METER_ID = &#39;smart-meter-3&#39;</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line22">22</a>       PricePlan.new(MOST_EVIL_PRICE_PLAN_ID, DR_EVILS_DARK_ENERGY_ENERGY_SUPPLIER, 10.0, []),</pre></td>
+          <td><pre><a name="line20">20</a>   ALEXS_SMART_METER_ID = &#39;smart-meter-4&#39;</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line23">23</a>       PricePlan.new(RENEWABLES_PRICE_PLAN_ID, THE_GREEN_ECO_ENERGY_SUPPLIER, 2.0, []),</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line24">24</a>       PricePlan.new(STANDARD_PRICE_PLAN_ID, POWER_FOR_EVERYONE_ENERGY_SUPPLIER, 1.0, [])</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line25">25</a>     ]</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line26">26</a>   end</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line27">27</a> </pre></td>
+          <td><pre><a name="line21">21</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line28">28</a>   def smart_meter_to_price_plan_accounts</pre></td>
+          <td><pre><a name="line22">22</a>   def price_plans</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line29">29</a>     {</pre></td>
+          <td><pre><a name="line23">23</a>     [</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line30">30</a>       SARAHS_SMART_METER_ID =&gt; MOST_EVIL_PRICE_PLAN_ID,</pre></td>
+          <td><pre><a name="line24">24</a>       PricePlan.new(MOST_EVIL_PRICE_PLAN_ID, DR_EVILS_DARK_ENERGY_ENERGY_SUPPLIER, 10.0, []),</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line31">31</a>       PETERS_SMART_METER_ID =&gt; RENEWABLES_PRICE_PLAN_ID,</pre></td>
+          <td><pre><a name="line25">25</a>       PricePlan.new(RENEWABLES_PRICE_PLAN_ID, THE_GREEN_ECO_ENERGY_SUPPLIER, 2.0, []),</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line32">32</a>       CHARLIES_SMART_METER_ID =&gt; MOST_EVIL_PRICE_PLAN_ID,</pre></td>
+          <td><pre><a name="line26">26</a>       PricePlan.new(STANDARD_PRICE_PLAN_ID, POWER_FOR_EVERYONE_ENERGY_SUPPLIER, 1.0, [])</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line33">33</a>       ANDREAS_SMART_METER_ID =&gt; STANDARD_PRICE_PLAN_ID,</pre></td>
+          <td><pre><a name="line27">27</a>     ]</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line34">34</a>       ALEXS_SMART_METER_ID =&gt; RENEWABLES_PRICE_PLAN_ID</pre></td>
+          <td><pre><a name="line28">28</a>   end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line35">35</a>     }</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line36">36</a>   end</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line37">37</a> </pre></td>
+          <td><pre><a name="line29">29</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line38">38</a>   def readings</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line39">39</a>     reading_generator = ElectricityReadingsGenerator.new</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line40">40</a>     smart_meter_to_price_plan_accounts.keys.collect do |meter_id|</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line41">41</a>       [meter_id, reading_generator.generate(20)]</pre></td>
+          <td><pre><a name="line30">30</a>   def smart_meter_to_price_plan_accounts</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line42">42</a>     end.to_h</pre></td>
+          <td><pre><a name="line31">31</a>     {</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line32">32</a>       SARAHS_SMART_METER_ID =&gt; MOST_EVIL_PRICE_PLAN_ID,</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line43">43</a>   end</pre></td>
+          <td><pre><a name="line33">33</a>       PETERS_SMART_METER_ID =&gt; RENEWABLES_PRICE_PLAN_ID,</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line44">44</a> end</pre></td>
+          <td><pre><a name="line34">34</a>       CHARLIES_SMART_METER_ID =&gt; MOST_EVIL_PRICE_PLAN_ID,</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line35">35</a>       ANDREAS_SMART_METER_ID =&gt; STANDARD_PRICE_PLAN_ID,</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line36">36</a>       ALEXS_SMART_METER_ID =&gt; RENEWABLES_PRICE_PLAN_ID</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line37">37</a>     }</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line38">38</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line39">39</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line40">40</a>   def readings</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line41">41</a>     reading_generator = ElectricityReadingsGenerator.new</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line42">42</a>     smart_meter_to_price_plan_accounts.keys.to_h do |meter_id|</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line43">43</a>       [meter_id, reading_generator.generate(20)]</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line44">44</a>     end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line45">45</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line46">46</a> end</pre></td>
         </tr>
       </tbody>
     </table>
 
-    <p>Generated on 2022-05-26 01:19:45 +0000 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.3.1</a></p>
+    <p>Generated on 2022-05-26 03:47:32 +0000 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.3.1</a></p>
 
   </body>
 </html>

@@ -25,7 +25,7 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="lib-app_rb.html">lib/app.rb</a></td>
-            <td class='right_align'><tt>20</tt></td>
+            <td class='right_align'><tt>22</tt></td>
             <td class='right_align'><tt>15</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
       <div class="percent_graph">
@@ -50,70 +50,76 @@
 
     <table class="details">
       <tbody>
-        <tr class="marked">
-          <td><pre><a name="line2">2</a> require &#39;sinatra/base&#39;</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line3">3</a> require &#39;json&#39;</pre></td>
+        <tr class="inferred">
+          <td><pre><a name="line2">2</a> # frozen_string_literal: true</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line4">4</a> </pre></td>
+          <td><pre><a name="line3">3</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line5">5</a> require_relative &#39;controller/meter_reading_controller&#39;</pre></td>
+          <td><pre><a name="line4">4</a> require &#39;sinatra/base&#39;</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line6">6</a> require_relative &#39;controller/price_plan_comparator_controller&#39;</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line7">7</a> require_relative &#39;service/electricity_reading_service&#39;</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line8">8</a> require_relative &#39;service/price_plan_service&#39;</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line9">9</a> require_relative &#39;service/account_service&#39;</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line10">10</a> require_relative &#39;./configuration&#39;</pre></td>
+          <td><pre><a name="line5">5</a> require &#39;json&#39;</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line11">11</a> </pre></td>
+          <td><pre><a name="line6">6</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line12">12</a> class JOIEnergy &lt; Sinatra::Base</pre></td>
+          <td><pre><a name="line7">7</a> require_relative &#39;controller/meter_reading_controller&#39;</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line13">13</a>   extend Configuration</pre></td>
+          <td><pre><a name="line8">8</a> require_relative &#39;controller/price_plan_comparator_controller&#39;</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line9">9</a> require_relative &#39;service/electricity_reading_service&#39;</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line10">10</a> require_relative &#39;service/price_plan_service&#39;</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line11">11</a> require_relative &#39;service/account_service&#39;</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line12">12</a> require_relative &#39;./configuration&#39;</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line14">14</a> </pre></td>
+          <td><pre><a name="line13">13</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line15">15</a>   electricity_reading_service = ElectricityReadingService.new(readings)</pre></td>
+          <td><pre><a name="line14">14</a> class JOIEnergy &lt; Sinatra::Base</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line16">16</a>   price_plan_service = PricePlanService.new(price_plans, electricity_reading_service)</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line17">17</a>   account_service = AccountService.new smart_meter_to_price_plan_accounts</pre></td>
+          <td><pre><a name="line15">15</a>   extend Configuration</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line18">18</a> </pre></td>
+          <td><pre><a name="line16">16</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line19">19</a>   use MeterReadingController, electricity_reading_service</pre></td>
+          <td><pre><a name="line17">17</a>   electricity_reading_service = ElectricityReadingService.new(readings)</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line20">20</a>   use PricePlanComparatorController, price_plan_service, account_service</pre></td>
+          <td><pre><a name="line18">18</a>   price_plan_service = PricePlanService.new(price_plans, electricity_reading_service)</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line19">19</a>   account_service = AccountService.new smart_meter_to_price_plan_accounts</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line21">21</a> end</pre></td>
+          <td><pre><a name="line20">20</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line21">21</a>   use MeterReadingController, electricity_reading_service</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line22">22</a>   use PricePlanComparatorController, price_plan_service, account_service</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line23">23</a> end</pre></td>
         </tr>
       </tbody>
     </table>
 
-    <p>Generated on 2022-05-26 01:19:45 +0000 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.3.1</a></p>
+    <p>Generated on 2022-05-26 03:47:32 +0000 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.3.1</a></p>
 
   </body>
 </html>

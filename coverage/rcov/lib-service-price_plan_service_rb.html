@@ -25,7 +25,7 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="lib-service-price_plan_service_rb.html">lib/service/price_plan_service.rb</a></td>
-            <td class='right_align'><tt>37</tt></td>
+            <td class='right_align'><tt>39</tt></td>
             <td class='right_align'><tt>20</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
       <div class="percent_graph">
@@ -50,121 +50,127 @@
 
     <table class="details">
       <tbody>
-        <tr class="marked">
-          <td><pre><a name="line2">2</a> require &#39;date&#39;</pre></td>
+        <tr class="inferred">
+          <td><pre><a name="line2">2</a> # frozen_string_literal: true</pre></td>
         </tr>
         <tr class="inferred">
           <td><pre><a name="line3">3</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line4">4</a> class PricePlanService</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line5">5</a>   def initialize(price_plans, electricity_reading_service)</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line6">6</a>     @price_plans = price_plans</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line7">7</a>     @electricity_reading_service = electricity_reading_service</pre></td>
+          <td><pre><a name="line4">4</a> require &#39;date&#39;</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line8">8</a>   end</pre></td>
+          <td><pre><a name="line5">5</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line6">6</a> class PricePlanService</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line7">7</a>   def initialize(price_plans, electricity_reading_service)</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line8">8</a>     @price_plans = price_plans</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line9">9</a>     @electricity_reading_service = electricity_reading_service</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line9">9</a> </pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line10">10</a>   def consumption_cost_of_meter_readings_for_each_price_plan(meter_id)</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line11">11</a>     readings = @electricity_reading_service.getReadings(meter_id)</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line12">12</a>     if readings.nil?</pre></td>
+          <td><pre><a name="line10">10</a>   end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line13">13</a>       nil</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line14">14</a>     else</pre></td>
+          <td><pre><a name="line11">11</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line15">15</a>       @price_plans.collect do |p|</pre></td>
+          <td><pre><a name="line12">12</a>   def consumption_cost_of_meter_readings_for_each_price_plan(meter_id)</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line16">16</a>         [p.plan_name, calculate_cost(readings, p)]</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line17">17</a>       end.to_h</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line18">18</a>     end</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line19">19</a>   end</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line20">20</a> </pre></td>
+          <td><pre><a name="line13">13</a>     readings = @electricity_reading_service.get_readings(meter_id)</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line21">21</a>   def calculate_cost(readings, price_plan)</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line22">22</a>     average = calculate_average_reading(readings)</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line23">23</a>     time_elapsed = calculate_time_elapsed(readings)</pre></td>
+          <td><pre><a name="line14">14</a>     if readings.nil?</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line24">24</a> </pre></td>
+          <td><pre><a name="line15">15</a>       nil</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line16">16</a>     else</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line25">25</a>     averaged_cost = average / time_elapsed</pre></td>
+          <td><pre><a name="line17">17</a>       @price_plans.to_h do |p|</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line18">18</a>         [p.plan_name, calculate_cost(readings, p)]</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line19">19</a>       end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line20">20</a>     end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line21">21</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line22">22</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line23">23</a>   def calculate_cost(readings, price_plan)</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line24">24</a>     average = calculate_average_reading(readings)</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line25">25</a>     time_elapsed = calculate_time_elapsed(readings)</pre></td>
         </tr>
         <tr class="inferred">
           <td><pre><a name="line26">26</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line27">27</a>     averaged_cost * price_plan.base_cost</pre></td>
+          <td><pre><a name="line27">27</a>     averaged_cost = average / time_elapsed</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line28">28</a>   end</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line29">29</a> </pre></td>
+          <td><pre><a name="line28">28</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line30">30</a>   def calculate_average_reading(readings)</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line31">31</a>     readings.map { |entry| entry[&#39;reading&#39;] }.inject(:+) / readings.length</pre></td>
+          <td><pre><a name="line29">29</a>     averaged_cost * price_plan.base_cost</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line32">32</a>   end</pre></td>
+          <td><pre><a name="line30">30</a>   end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line33">33</a> </pre></td>
+          <td><pre><a name="line31">31</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line34">34</a>   def calculate_time_elapsed(readings)</pre></td>
+          <td><pre><a name="line32">32</a>   def calculate_average_reading(readings)</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line35">35</a>     time_span = readings.map { |entry| DateTime.iso8601(entry[&#39;time&#39;]).to_time }.minmax</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line36">36</a>     (time_span[1] - time_span[0]) / 3600.0</pre></td>
+          <td><pre><a name="line33">33</a>     readings.sum { |entry| entry[&#39;reading&#39;] } / readings.length</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line37">37</a>   end</pre></td>
+          <td><pre><a name="line34">34</a>   end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line38">38</a> end</pre></td>
+          <td><pre><a name="line35">35</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line36">36</a>   def calculate_time_elapsed(readings)</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line37">37</a>     time_span = readings.map { |entry| DateTime.iso8601(entry[&#39;time&#39;]).to_time }.minmax</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line38">38</a>     (time_span[1] - time_span[0]) / 3600.0</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line39">39</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line40">40</a> end</pre></td>
         </tr>
       </tbody>
     </table>
 
-    <p>Generated on 2022-05-26 01:19:45 +0000 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.3.1</a></p>
+    <p>Generated on 2022-05-26 03:47:32 +0000 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.3.1</a></p>
 
   </body>
 </html>

@@ -25,12 +25,12 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="lib-helpers-usage_interval_rb.html">lib/helpers/usage_interval.rb</a></td>
-            <td class='right_align'><tt>21</tt></td>
+            <td class='right_align'><tt>23</tt></td>
             <td class='right_align'><tt>12</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>71.43%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>73.91%</tt></div>
       <div class="percent_graph">
-        <div class="covered" style="width:71px"></div>
-        <div class="uncovered" style="width:29px"></div>
+        <div class="covered" style="width:74px"></div>
+        <div class="uncovered" style="width:26px"></div>
       </div></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>50.00%</tt></div>
       <div class="percent_graph">
@@ -50,73 +50,79 @@
 
     <table class="details">
       <tbody>
-        <tr class="marked">
-          <td><pre><a name="line2">2</a> require &#39;date&#39;</pre></td>
+        <tr class="inferred">
+          <td><pre><a name="line2">2</a> # frozen_string_literal: true</pre></td>
         </tr>
         <tr class="inferred">
           <td><pre><a name="line3">3</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line4">4</a> class UsageInterval</pre></td>
+          <td><pre><a name="line4">4</a> require &#39;date&#39;</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line5">5</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line5">5</a>   def initialize(date)</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line6">6</a>     day_of_the_week = date.cwday</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line7">7</a>     @end = date - day_of_the_week</pre></td>
-        </tr>
-        <tr class="uncovered">
-          <td><pre><a name="line8">8</a>     @begin = @end - 7</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line9">9</a>   end</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line10">10</a> </pre></td>
+          <td><pre><a name="line6">6</a> class UsageInterval</pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line11">11</a>   def self.usageIntervalFromPreviousWeek(date = Date.today)</pre></td>
+          <td><pre><a name="line7">7</a>   def initialize(date)</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line12">12</a>     UsageInterval.new date</pre></td>
+          <td><pre><a name="line8">8</a>     day_of_the_week = date.cwday</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line9">9</a>     @end = date - day_of_the_week</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line10">10</a>     @begin = @end - 7</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line13">13</a>   end</pre></td>
+          <td><pre><a name="line11">11</a>   end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line14">14</a> </pre></td>
+          <td><pre><a name="line12">12</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line15">15</a>   def begin</pre></td>
+          <td><pre><a name="line13">13</a>   def self.usage_interval_from_previous_week(date = Date.today)</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line16">16</a>     @begin.to_time.to_i</pre></td>
+          <td><pre><a name="line14">14</a>     UsageInterval.new date</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line17">17</a>   end</pre></td>
+          <td><pre><a name="line15">15</a>   end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line18">18</a> </pre></td>
+          <td><pre><a name="line16">16</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line19">19</a>   def end</pre></td>
+          <td><pre><a name="line17">17</a>   def begin</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line20">20</a>     @end.to_time.to_i</pre></td>
+          <td><pre><a name="line18">18</a>     @begin.to_time.to_i</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line21">21</a>   end</pre></td>
+          <td><pre><a name="line19">19</a>   end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line22">22</a> end</pre></td>
+          <td><pre><a name="line20">20</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line21">21</a>   def end</pre></td>
+        </tr>
+        <tr class="uncovered">
+          <td><pre><a name="line22">22</a>     @end.to_time.to_i</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line23">23</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line24">24</a> end</pre></td>
         </tr>
       </tbody>
     </table>
 
-    <p>Generated on 2022-05-26 01:19:45 +0000 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.3.1</a></p>
+    <p>Generated on 2022-05-26 03:47:32 +0000 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.3.1</a></p>
 
   </body>
 </html>

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PricePlan
   attr_reader :plan_name, :base_cost
 
@@ -9,8 +11,8 @@ class PricePlan
   end
 
   def price(date_time)
-    ptm = @peak_time_multipliers.select { |ptm| ptm.day_of_week == date_time.wday }.first
-    ptm.nil? ? @base_cost : @base_cost * ptm.multiplier
+    peak_time_multiplier = @peak_time_multipliers.find { |peak_time| peak_time.day_of_week == date_time.wday }
+    peak_time_multiplier.nil? ? @base_cost : @base_cost * peak_time_multiplier.multiplier
   end
 
   class PeakTimeMultiplier

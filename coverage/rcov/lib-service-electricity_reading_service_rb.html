@@ -25,12 +25,12 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="lib-service-electricity_reading_service_rb.html">lib/service/electricity_reading_service.rb</a></td>
-            <td class='right_align'><tt>23</tt></td>
+            <td class='right_align'><tt>25</tt></td>
             <td class='right_align'><tt>13</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>86.96%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>88.00%</tt></div>
       <div class="percent_graph">
-        <div class="covered" style="width:87px"></div>
-        <div class="uncovered" style="width:13px"></div>
+        <div class="covered" style="width:88px"></div>
+        <div class="uncovered" style="width:12px"></div>
       </div></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>76.92%</tt></div>
       <div class="percent_graph">
@@ -50,79 +50,85 @@
 
     <table class="details">
       <tbody>
-        <tr class="marked">
-          <td><pre><a name="line2">2</a> require_relative &#39;../helpers/usage_interval&#39;</pre></td>
+        <tr class="inferred">
+          <td><pre><a name="line2">2</a> # frozen_string_literal: true</pre></td>
         </tr>
         <tr class="inferred">
           <td><pre><a name="line3">3</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line4">4</a> class ElectricityReadingService</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line5">5</a>   def initialize(readings_store = nil)</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line6">6</a>     @readings_store = readings_store || {}</pre></td>
+          <td><pre><a name="line4">4</a> require_relative &#39;../helpers/usage_interval&#39;</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line7">7</a>   end</pre></td>
+          <td><pre><a name="line5">5</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line6">6</a> class ElectricityReadingService</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line7">7</a>   def initialize(readings_store = nil)</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line8">8</a>     @readings_store = readings_store || {}</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line8">8</a> </pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line9">9</a>   def getReadings(meter_id)</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line10">10</a>     @readings_store[meter_id]</pre></td>
+          <td><pre><a name="line9">9</a>   end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line11">11</a>   end</pre></td>
+          <td><pre><a name="line10">10</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line11">11</a>   def get_readings(meter_id)</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line12">12</a>     @readings_store[meter_id]</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line12">12</a> </pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line13">13</a>   def storeReadings(meter_id, readings)</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line14">14</a>     @readings_store[meter_id] ||= []</pre></td>
-        </tr>
-        <tr class="marked">
-          <td><pre><a name="line15">15</a>     @readings_store[meter_id].concat(readings)</pre></td>
+          <td><pre><a name="line13">13</a>   end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line16">16</a>   end</pre></td>
-        </tr>
-        <tr class="inferred">
-          <td><pre><a name="line17">17</a> </pre></td>
+          <td><pre><a name="line14">14</a> </pre></td>
         </tr>
         <tr class="marked">
-          <td><pre><a name="line18">18</a>   def getPreviousWeek(meter_id)</pre></td>
+          <td><pre><a name="line15">15</a>   def store_readings(meter_id, readings)</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line16">16</a>     @readings_store[meter_id] ||= []</pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line17">17</a>     @readings_store[meter_id].concat(readings)</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line18">18</a>   end</pre></td>
+        </tr>
+        <tr class="inferred">
+          <td><pre><a name="line19">19</a> </pre></td>
+        </tr>
+        <tr class="marked">
+          <td><pre><a name="line20">20</a>   def get_previous_week(meter_id)</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line19">19</a>     interval = UsageInterval.usageIntervalFromPreviousWeek</pre></td>
+          <td><pre><a name="line21">21</a>     interval = UsageInterval.usage_interval_from_previous_week</pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line20">20</a>     readings = @readings_store[meter_id]</pre></td>
+          <td><pre><a name="line22">22</a>     readings = @readings_store[meter_id]</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line21">21</a> </pre></td>
+          <td><pre><a name="line23">23</a> </pre></td>
         </tr>
         <tr class="uncovered">
-          <td><pre><a name="line22">22</a>     readings.select { |item| interval.begin &lt; item[&#39;time&#39;] &amp;&amp; interval.end &gt; item[&#39;time&#39;] }</pre></td>
+          <td><pre><a name="line24">24</a>     readings.select { |item| interval.begin &lt; item[&#39;time&#39;] &amp;&amp; interval.end &gt; item[&#39;time&#39;] }</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line23">23</a>   end</pre></td>
+          <td><pre><a name="line25">25</a>   end</pre></td>
         </tr>
         <tr class="inferred">
-          <td><pre><a name="line24">24</a> end</pre></td>
+          <td><pre><a name="line26">26</a> end</pre></td>
         </tr>
       </tbody>
     </table>
 
-    <p>Generated on 2022-05-26 01:19:45 +0000 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.3.1</a></p>
+    <p>Generated on 2022-05-26 03:47:32 +0000 with <a href="https://github.com/fguillen/simplecov-rcov">SimpleCov-RCov 0.3.1</a></p>
 
   </body>
 </html>

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AccountService
   def initialize(smart_meter_to_price_plan_accounts)
     @smart_meter_to_price_plan_accounts = smart_meter_to_price_plan_accounts

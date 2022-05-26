@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'date'
 
 class UsageInterval
@@ -7,7 +9,7 @@ class UsageInterval
     @begin = @end - 7
   end
 
-  def self.usageIntervalFromPreviousWeek(date = Date.today)
+  def self.usage_interval_from_previous_week(date = Date.today)
     UsageInterval.new date
   end
 
