@@ -1,0 +1,32 @@
+version: "3.9"
+
+volumes:
+  gem_cache:
+
+services:
+  web:
+    build: .
+    volumes:
+      - .:/var/app
+      - gem_cache:/usr/local/bundle/gems
+    ports:
+      - "9293:9293"
+      - "9292:9292"
+    stdin_open: true
+    tty: true
+    environment:
+      - RACK_ENV=development
+    entrypoint: entrypoint.sh
+    command: ['puma', '--control', 'tcp://0.0.0.0:9293', '--control-token', 'foo', 'config.ru', '--redirect-stdout', 'test-server-stdout.log', '--redirect-stderr', 'test-server-stderr.log' ]
+
+  test:
+    build: .
+    volumes:
+      - .:/var/app
+      - gem_cache:/usr/local/bundle/gems
+    stdin_open: true
+    tty: true
+    environment:
+      - RACK_ENV=test
+    entrypoint: entrypoint.sh
+    command: ['rspec', '-fdoc']

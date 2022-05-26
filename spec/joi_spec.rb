@@ -1,8 +1,6 @@
-ENV['RACK_ENV'] = 'test'
+# frozen_string_literal: true
 
-require_relative '../lib/app.rb'
-require 'rspec'
-require 'rack/test'
+require 'spec_helper'
 
 describe JOIEnergy do
   include Rack::Test::Methods
@@ -15,7 +13,7 @@ describe JOIEnergy do
     readings_record = {
       'smartMeterId' => 'smart-meter-0',
       'electricityReadings' => [
-        { 'time': '2018-01-01T00:00:00.000Z', 'reading': 1.5 }
+        { time: '2018-01-01T00:00:00.000Z', reading: 1.5 }
       ]
     }
     post '/readings/store', readings_record.to_json, 'CONTENT_TYPE' => 'application/json'

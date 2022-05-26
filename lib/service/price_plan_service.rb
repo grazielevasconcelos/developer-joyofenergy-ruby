@@ -9,11 +9,11 @@ class PricePlanService
   def consumption_cost_of_meter_readings_for_each_price_plan(meter_id)
     readings = @electricity_reading_service.getReadings(meter_id)
     if readings.nil?
-      return nil
+      nil
     else
-      Hash[@price_plans.collect { |p| 
+      @price_plans.collect do |p|
         [p.plan_name, calculate_cost(readings, p)]
-      }]
+      end.to_h
     end
   end
 
@@ -27,11 +27,11 @@ class PricePlanService
   end
 
   def calculate_average_reading(readings)
-    readings.map {|entry| entry['reading']}.inject(:+) / readings.length
+    readings.map { |entry| entry['reading'] }.inject(:+) / readings.length
   end
 
   def calculate_time_elapsed(readings)
-    time_span = readings.map {|entry| DateTime.iso8601(entry['time']).to_time}.minmax
-    (time_span[1] - time_span[0])/3600.0
+    time_span = readings.map { |entry| DateTime.iso8601(entry['time']).to_time }.minmax
+    (time_span[1] - time_span[0]) / 3600.0
   end
 end

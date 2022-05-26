@@ -1,24 +1,20 @@
-ENV['RACK_ENV'] = 'test'
+# frozen_string_literal: true
 
-require_relative '../../lib/controller/meter_reading_controller.rb'
-require 'json'
-require 'rspec'
-require 'rack/test'
+require 'spec_helper'
 
 describe MeterReadingController do
   include Rack::Test::Methods
 
   let(:app) { described_class.new(electricity_reading_service) }
   let(:electricity_reading_service) { ElectricityReadingService.new }
-  
-  describe '/readings/store' do
 
-    it 'should store a meter reading against a new meter' do
+  describe '/readings/store' do
+    it 'stores a meter reading against a new meter' do
       readings_record = {
         'smartMeterId' => '0101010',
         'electricityReadings' => [
-          { 'time': '2018-01-01T00:00:00.000Z', 'reading': 1.5 },
-          { 'time': '2018-01-01T00:00:00.000Z', 'reading': 1.5 }
+          { time: '2018-01-01T00:00:00.000Z', reading: 1.5 },
+          { time: '2018-01-01T00:00:00.000Z', reading: 1.5 }
         ]
       }
       post '/readings/store', readings_record.to_json, 'CONTENT_TYPE' => 'application/json'
@@ -28,12 +24,12 @@ describe MeterReadingController do
       expect(JSON.parse(last_response.body).length).to eq 2
     end
 
-    it 'should store more meter readings against an existing meter' do
+    it 'stores more meter readings against an existing meter' do
       readings_record = {
         'smartMeterId' => '0101010',
         'electricityReadings' => [
-          { 'time': '2018-01-01T00:00:00.000Z', 'reading': 1.5 },
-          { 'time': '2018-01-01T00:00:00.000Z', 'reading': 1.5 }
+          { time: '2018-01-01T00:00:00.000Z', reading: 1.5 },
+          { time: '2018-01-01T00:00:00.000Z', reading: 1.5 }
         ]
       }
       post '/readings/store', readings_record.to_json, 'CONTENT_TYPE' => 'application/json'
@@ -42,7 +38,7 @@ describe MeterReadingController do
       more_readings = {
         'smartMeterId' => '0101010',
         'electricityReadings' => [
-          { 'time': '2018-01-01T00:00:00.000Z', 'reading': 1.5 }
+          { time: '2018-01-01T00:00:00.000Z', reading: 1.5 }
         ]
       }
       post '/readings/store', more_readings.to_json, 'CONTENT_TYPE' => 'application/json'
@@ -51,22 +47,22 @@ describe MeterReadingController do
       get '/readings/read/0101010'
       expect(JSON.parse(last_response.body).length).to eq 3
     end
-    
-    it 'should return error response when no meter id is supplied' do
+
+    it 'returns error response when no meter id is supplied' do
       post '/readings/store', {}.to_json, 'CONTENT_TYPE' => 'application/json'
       expect(last_response.status).to eq 500
     end
 
-    it 'should return error response when given empty readings' do
-      post '/readings/store', { 'smartMeterId' => '0101010', 'electricityReadings' => [] }.to_json, 'CONTENT_TYPE' => 'application/json'
+    it 'returns error response when given empty readings' do
+      post '/readings/store', { 'smartMeterId' => '0101010', 'electricityReadings' => [] }.to_json,
+           'CONTENT_TYPE' => 'application/json'
       expect(last_response.status).to eq 500
     end
 
-    it 'should return error response when readings not provided' do
-      post '/readings/store', { 'smartMeterId' => '0101010' }.to_json, 'CONTENT_TYPE' => 'application/json'
+    it 'returns error response when readings not provided' do
+      post '/readings/store', { 'smartMeterId' => '0101010' }.to_json,
+           'CONTENT_TYPE' => 'application/json'
       expect(last_response.status).to eq 500
     end
-    
   end
-  
 end

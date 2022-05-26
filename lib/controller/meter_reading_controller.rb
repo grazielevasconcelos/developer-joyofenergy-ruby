@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require_relative '../service/electricty_reading_service'
+require_relative '../service/electricity_reading_service'
 
 class MeterReadingController < Sinatra::Base
   def initialize(app = nil, electricity_reading_service)
@@ -13,7 +13,7 @@ class MeterReadingController < Sinatra::Base
       @request_payload = JSON.parse request.body.read
     end
   end
-  
+
   get '/readings/read/{meter_id}' do
     content_type :json
     @electricity_reading_service.getReadings(@params['meter_id']).to_json

@@ -9,7 +9,7 @@ class PricePlan
   end
 
   def price(date_time)
-    ptm = @peak_time_multipliers.select {|ptm| ptm.day_of_week == date_time.wday}.first
+    ptm = @peak_time_multipliers.select { |ptm| ptm.day_of_week == date_time.wday }.first
     ptm.nil? ? @base_cost : @base_cost * ptm.multiplier
   end
 
