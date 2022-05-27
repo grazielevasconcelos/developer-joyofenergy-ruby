@@ -1,5 +1,8 @@
 # Welcome to PowerDale
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/5738f7b102ef4f4ab49d/maintainability)](https://codeclimate.com/github/grazielevasconcelos/developer-joyofenergy-ruby/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/5738f7b102ef4f4ab49d/test_coverage)](https://codeclimate.com/github/grazielevasconcelos/developer-joyofenergy-ruby/test_coverage)
+
 PowerDale is a small town with around 100 residents. Most houses have a smart meter installed that can save and send information about how much power a house is drawing/using.
 
 There are three major providers of energy in town that charge different amounts for the power they supply.
