@@ -71,4 +71,88 @@ describe MeterReadingController do
       expect(last_response.status).to eq 500
     end
   end
+
+  describe '/readings/read/{meter_id}/previous_week' do
+    subject(:previous_week) { get '/readings/read/0101010/previous_week' }
+
+    context 'with meter id with previous week readings' do
+      let(:interval_end) { Date.today - Date.today.cwday }
+      let(:interval_begin) { interval_end - 7 }
+      let(:readings_record) do
+        {
+          'smartMeterId' => '0101010',
+          'electricityReadings' => [
+            { time: interval_begin.iso8601.to_s, reading: 1.5 },
+            { time: interval_end.iso8601.to_s, reading: 1.9 }
+          ]
+        }
+      end
+
+      before { post '/readings/store', readings_record.to_json, 'CONTENT_TYPE' => 'application/json' }
+
+      it 'returns http 200' do
+        previous_week
+
+        expect(last_response.status).to eq(200)
+      end
+
+      it 'returns readings' do
+        previous_week
+
+        expect(last_response.body).to eq(readings_record['electricityReadings'].to_json)
+      end
+    end
+
+    context 'with meter id without readings' do
+      let(:readings_record) do
+        {
+          'smartMeterId' => '0101010',
+          'electricityReadings' => [
+            { time: '2021-05-20T00:00:58+00:00', reading: 1.5 },
+            { time: '2021-05-19T00:00:58+00:00', reading: 1.5 }
+          ]
+        }
+      end
+
+      before { post '/readings/store', readings_record.to_json, 'CONTENT_TYPE' => 'application/json' }
+
+      it 'returns http 200' do
+        previous_week
+
+        expect(last_response.status).to eq(200)
+      end
+
+      it 'returns empty array' do
+        previous_week
+
+        expect(last_response.body).to eq('[]')
+      end
+    end
+
+    context 'with meter id does not exists' do
+      let(:readings_record) do
+        {
+          'smartMeterId' => '23333',
+          'electricityReadings' => [
+            { time: '2021-05-20T00:00:58+00:00', reading: 1.5 },
+            { time: '2021-05-19T00:00:58+00:00', reading: 1.5 }
+          ]
+        }
+      end
+
+      before { post '/readings/store', readings_record.to_json, 'CONTENT_TYPE' => 'application/json' }
+
+      it 'returns http 404' do
+        previous_week
+
+        expect(last_response.status).to eq(404)
+      end
+
+      it 'returns empty' do
+        previous_week
+
+        expect(last_response.body.empty?).to be(true)
+      end
+    end
+  end
 end

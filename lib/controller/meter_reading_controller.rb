@@ -33,4 +33,15 @@ class MeterReadingController < Sinatra::Base
       status 500
     end
   end
+
+  get '/readings/read/{meter_id}/previous_week' do
+    content_type :json
+    readings_previous_week = @electricity_reading_service.get_previous_week(@params['meter_id'])
+
+    if readings_previous_week
+      readings_previous_week.to_json
+    else
+      status 404
+    end
+  end
 end

@@ -18,8 +18,29 @@ describe ElectricityReadingService do
     ]
   end
 
-  xit 'should return empty array when date is before' do
-    expect(meter_reading_service.get_previous_week).to eq([])
+  context 'with previous week empty' do
+    it 'returns empty array when date is before' do
+      meter_reading_service = described_class.new
+      meter_reading_service.store_readings('meter-id', readings_store)
+      expect(meter_reading_service.get_previous_week('meter-id')).to eq([])
+    end
+  end
+
+  context 'with previous week has data' do
+    let(:interval_end) { Date.today - Date.today.cwday }
+    let(:interval_begin) { interval_end - 7 }
+    let(:readings_store) do
+      [
+        { time: interval_begin.iso8601.to_s, reading: 0.0503 },
+        { time: interval_end.iso8601.to_s, reading: 0.0213 }
+      ]
+    end
+
+    it 'returns empty array when date is before' do
+      meter_reading_service = described_class.new
+      meter_reading_service.store_readings('meter-id', readings_store)
+      expect(meter_reading_service.get_previous_week('meter-id')).to eq(readings_store)
+    end
   end
 
   it "returns null when asked for a meter that doesn't exist" do
