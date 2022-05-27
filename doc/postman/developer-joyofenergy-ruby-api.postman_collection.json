@@ -1,0 +1,605 @@
+{
+	"info": {
+		"_postman_id": "a3ab02b6-551f-4ec5-9bdc-e68ddc9d789c",
+		"name": "developer-joyofenergy-ruby-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2534388"
+	},
+	"item": [
+		{
+			"name": "Store Readings",
+			"item": [
+				{
+					"name": "Store Readings Sarah",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"smartMeterId\": \"smart-meter-0\",\n    \"electricityReadings\": [\n        {\n            \"time\": \"2022-11-11T08:00+00\",\n            \"reading\": 0.0503\n        },\n        {\n            \"time\": \"2022-05-18T08:00+00\",\n            \"reading\": 0.0213\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/readings/store",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"readings",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store Readings Peter",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"smartMeterId\": \"smart-meter-1\",\n    \"electricityReadings\": [\n        {\n            \"time\": \"2020-11-13T08:00+00\",\n            \"reading\": 0.0503\n        },\n        {\n            \"time\": \"2020-11-14T08:00+00\",\n            \"reading\": 0.0213\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/readings/store",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"readings",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store Readings Charlie",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"smartMeterId\": \"smart-meter-2\",\n    \"electricityReadings\": [\n        {\n            \"time\": \"2020-11-15T08:00+00\",\n            \"reading\": 0.0503\n        },\n        {\n            \"time\": \"2020-11-16T08:00+00\",\n            \"reading\": 0.0213\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/readings/store",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"readings",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store Readings Andrea",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"smartMeterId\": \"smart-meter-3\",\n    \"electricityReadings\": [\n        {\n            \"time\": \"2020-11-17T08:00+00\",\n            \"reading\": 0.0503\n        },\n        {\n            \"time\": \"2020-11-18T08:00+00\",\n            \"reading\": 0.0213\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/readings/store",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"readings",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store Readings Alex",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"smartMeterId\": \"smart-meter-4\",\n    \"electricityReadings\": [\n        {\n            \"time\": \"2020-11-19T08:00+00\",\n            \"reading\": 0.0503\n        },\n        {\n            \"time\": \"2020-11-20T08:00+00\",\n            \"reading\": 0.0213\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/readings/store",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"readings",
+								"store"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Stored Readings",
+			"item": [
+				{
+					"name": "Get Stored Readings Sarah",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/readings/read/smart-meter-0",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"readings",
+								"read",
+								"smart-meter-0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Stored Readings Peter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/readings/read/smart-meter-1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"readings",
+								"read",
+								"smart-meter-1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Stored Readings Charlie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/readings/read/smart-meter-2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"readings",
+								"read",
+								"smart-meter-2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Stored Readings Andrea",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/readings/read/smart-meter-3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"readings",
+								"read",
+								"smart-meter-3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Stored Readings Alex",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/readings/read/smart-meter-4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"readings",
+								"read",
+								"smart-meter-4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Previous Week Readings",
+			"item": [
+				{
+					"name": "Get Stored Readings Sarah",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/readings/read/smart-meter-0/previous_week",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"readings",
+								"read",
+								"smart-meter-0",
+								"previous_week"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Stored Readings Peter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/readings/read/smart-meter-1/previous_week",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"readings",
+								"read",
+								"smart-meter-1",
+								"previous_week"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Stored Readings Charlie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/readings/read/smart-meter-2/previous_week",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"readings",
+								"read",
+								"smart-meter-2",
+								"previous_week"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Stored Readings Andrea",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/readings/read/smart-meter-3/previous_week",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"readings",
+								"read",
+								"smart-meter-3",
+								"previous_week"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Stored Readings Alex",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/readings/read/smart-meter-4/previous_week",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"readings",
+								"read",
+								"smart-meter-4",
+								"previous_week"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Stored Readings Break!",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/readings/read/smart-meter-999999/previous_week",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"readings",
+								"read",
+								"smart-meter-999999",
+								"previous_week"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "View Current Price Plan and Compare Usage Cost Against all Price Plans",
+			"item": [
+				{
+					"name": "Compare all Price Plans Sarah",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/price-plans/compare-all/smart-meter-0",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"price-plans",
+								"compare-all",
+								"smart-meter-0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Compare all Price Plans Peter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/price-plans/compare-all/smart-meter-1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"price-plans",
+								"compare-all",
+								"smart-meter-1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Compare all Price Plans Charlie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/price-plans/compare-all/smart-meter-2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"price-plans",
+								"compare-all",
+								"smart-meter-2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Compare all Price Plans Andrea",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/price-plans/compare-all/smart-meter-3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"price-plans",
+								"compare-all",
+								"smart-meter-3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Compare all Price Plans Alex",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/price-plans/compare-all/smart-meter-4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"price-plans",
+								"compare-all",
+								"smart-meter-4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "View Recommended Price Plans for Usage",
+			"item": [
+				{
+					"name": "Recommended Price Plans for Usage Sarah",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/price-plans/recommend/smart-meter-0?limit=10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"price-plans",
+								"recommend",
+								"smart-meter-0"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recommended Price Plans for Usage Peter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/price-plans/recommend/smart-meter-1?limit=10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"price-plans",
+								"recommend",
+								"smart-meter-1"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recommended Price Plans for Usage Charlie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/price-plans/recommend/smart-meter-2?limit=10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"price-plans",
+								"recommend",
+								"smart-meter-2"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recommended Price Plans for Usage Andrea",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/price-plans/recommend/smart-meter-3?limit=10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"price-plans",
+								"recommend",
+								"smart-meter-3"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recommended Price Plans for Usage Alex",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/price-plans/recommend/smart-meter-4?limit=10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"price-plans",
+								"recommend",
+								"smart-meter-4"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
