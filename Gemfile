@@ -16,5 +16,6 @@ group :development do
   gem 'rubocop-rspec'
   gem 'simplecov'
   gem 'simplecov-html'
+  gem 'simplecov_json_formatter'
   gem 'simplecov-rcov'
 end

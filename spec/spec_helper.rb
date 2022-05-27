@@ -19,6 +19,8 @@ ENV['RACK_ENV'] = 'test'
 
 require 'simplecov'
 require 'simplecov-rcov'
+require 'simplecov_json_formatter'
+require 'simplecov-html'
 
 module SimpleCov
   module Formatter
@@ -30,7 +32,11 @@ module SimpleCov
     end
   end
 end
-SimpleCov.formatter = SimpleCov::Formatter::MergedFormatter
+
+SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new([
+                                                                  SimpleCov::Formatter::MergedFormatter,
+                                                                  SimpleCov::Formatter::JSONFormatter
+                                                                ])
 
 SimpleCov.start do
   add_filter '../../../lib'

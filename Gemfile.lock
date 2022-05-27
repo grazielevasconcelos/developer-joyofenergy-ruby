@@ -93,6 +93,7 @@ DEPENDENCIES
   simplecov
   simplecov-html
   simplecov-rcov
+  simplecov_json_formatter
   sinatra
 
 BUNDLED WITH
